@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="webcc\base64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\client_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\client_session.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\connection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\connection_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\gzip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\request.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\request_builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\request_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\response.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\response_builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\response_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\router.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\url.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="webcc\view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="webcc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="webcc\config.h.example" />
+    <None Include="webcc\config.h.in" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="base64.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="body.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="client.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="client_pool.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="client_session.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="connection.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="connection_pool.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="globals.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gzip.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="message.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="request.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="request_builder.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="request_parser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="response.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="response_builder.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="response_parser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="router.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="socket.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="url.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
