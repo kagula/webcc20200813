@@ -50,6 +50,7 @@
     <ClInclude Include="webcc\view.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="kagula_update_log.txt" />
     <Text Include="webcc\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>

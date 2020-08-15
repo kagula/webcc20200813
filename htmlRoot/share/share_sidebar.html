@@ -1,0 +1,95 @@
+<!-- BEGIN SIDEBAR -->
+<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+<div class="page-sidebar navbar-collapse collapse">
+    <!-- BEGIN SIDEBAR MENU -->
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true"
+        data-slide-speed="200" style="padding-top: 2px" id="sideMenu">
+        <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <li class="sidebar-toggler-wrapper hide">
+            <div class="sidebar-toggler">
+                <span></span>
+            </div>
+        </li>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+        <li class="heading">
+            <h3 class="uppercase">报警信息</h3>
+        </li>
+        <li class="nav-item  " id="warning_menu_item">
+            <a href="#!/Warning" class="nav-link nav-toggle">
+                <i class="icon-diamond"></i>
+                <span class="title">未处理报警</span>
+            </a>
+        </li>
+        <li class="nav-item  " id="waning_history_item">
+            <a href="#!/warningHistory" class="nav-link nav-toggle">
+                <i class="icon-diamond"></i>
+                <span class="title">报警历史</span>
+            </a>
+        </li>
+        <li class="nav-item  " id="map_edit_item">
+            <a href="#!/mapEdit" class="nav-link nav-toggle">
+                <i class="icon-diamond"></i>
+                <span class="title">防区管理</span>
+            </a>
+        </li>
+
+
+        <li class="heading">
+            <h3 class="uppercase">设备管理</h3>
+        </li>
+        <li id="vibration_fiber_item" class="nav-item ">
+            <a href="#!/vibrationFiber" class="nav-link nav-toggle">
+                <i class="icon-layers"></i>
+                <span class="title">振动光纤设备</span>
+            </a>
+        </li>
+        <li id="relay_device_item" class="nav-item  ">
+            <a href="#!/relayDevice" class="nav-link nav-toggle">
+                <i class="icon-feed"></i>
+                <span class="title">继电器</span>
+            </a>
+        </li>
+        <li id="infrared_sensor_item" class="nav-item  ">
+            <a href="#!/infraredSensor" class="nav-link nav-toggle">
+                <i class="icon-feed"></i>
+                <span class="title">红外对射</span>
+            </a>
+        </li>
+        <li id="camera_item" class="nav-item  ">
+            <a href="#!/cameraDevice" class="nav-link nav-toggle">
+                <i class="icon-feed"></i>
+                <span class="title">摄像头</span>
+            </a>
+        </li>
+
+
+        <li class="heading">
+            <h3 class="uppercase">用户管理</h3>
+        </li>
+        <li id="user_list_item" class="nav-item ">
+            <!--  href属性中也可以填javascript:kagula_test();点击调用JS函数 -->
+            <a href="#!/userList" class="nav-link nav-toggle">
+                <i class="icon-docs"></i>
+                <span class="title">用户信息</span>
+            </a>
+        </li>
+        <li id="user_group_item" class="nav-item ">
+            <!--  href属性中也可以填javascript:kagula_test();点击调用JS函数 -->
+            <a href="#!/userGroup" class="nav-link nav-toggle">
+                <i class="icon-docs"></i>
+                <span class="title">用户组管理</span>
+            </a>
+        </li>
+    </ul>
+    <!-- END SIDEBAR MENU -->
+    <!-- END SIDEBAR MENU -->
+</div>
+<!-- END SIDEBAR -->

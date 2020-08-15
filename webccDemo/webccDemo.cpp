@@ -17,6 +17,33 @@ public:
     }
 };
 
+class GetCurrentUser : public webcc::View {
+public:
+    webcc::ResponsePtr Handle(webcc::RequestPtr request) override {
+        if (request->method() == "POST") {
+            return Post(request);
+        }
+
+        return {};
+    }
+
+private:
+    webcc::ResponsePtr Post(webcc::RequestPtr request) {
+        webcc::ResponsePtr rp;
+
+       /*
+       * 这里不能使用webcc::ResponseBuilder{}.Json()这样的形式返回结果
+       * 否则JavaScript中$.Post方式callback function不会被回调
+       */
+       rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0, \"loginName\":\"abc\", \"authorities\":\"admin\"}")();
+
+
+        webcc::Header header("Access-Control-Allow-Origin", "*");//  这里最好明确的写出允许的域名;
+        rp->SetHeader(std::move(header));
+        return rp;
+    }
+};
+
 class LoginView : public webcc::View {
 public:
     webcc::ResponsePtr Handle(webcc::RequestPtr request) override {
@@ -53,10 +80,11 @@ private:
 
 int main() {
     try {
-        webcc::Server server(8080);
+        webcc::Server server(8080,"C:\\Users\\chenlu-li\\source\\repos\\webcc20200813\\htmlRoot");
 
         //server.Route("/", std::make_shared<HelloView>());
         server.Route("/webccDemo/login.do", std::make_shared<LoginView>(), { "POST", "GET" });
+        server.Route("/webccDemo/user/getCurrentUser.do", std::make_shared<GetCurrentUser>(), { "POST", "GET" });
         server.Run();
 
     }

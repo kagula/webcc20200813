@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>unknown</title>
+</head>
+<body>
+    unknown
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>subpage_home</title>
+</head>
+<body>
+<h2>subpage_home</h2>
+
+<div ng-app="routingDemoApp" ng-controller="HomeController">
+
+    名:  <input type="text" ng-model="firstName"><br>
+    姓:  <input type="text" ng-model="lastName"><br>
+    <br>
+    姓名: {{firstName + " " + lastName}}
+
+</div>
+
+<script>
+    consle.log('aaaaaaaaaaaa');
+    var app = angular.module('routingDemoApp', []);
+    app.controller('HomeController', function($scope) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- BEGIN CONTENT BODY -->
+<!-- BEGIN PAGE HEADER-->
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title"> 用户管理
+    <small>用户组</small>
+</h1>
+<!-- END PAGE TITLE-->
+<!-- END PAGE HEADER-->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-settings font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">用户组</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar" id="idToolbar" style="display:none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="btnAddNewuser" class="btn green"> 添加新用户
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover table-bordered" id="mainTable">
+                    <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> 用户组 </th>
+                        <th> 地图 </th>
+                        <th> 操作 </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="x in listGroup">
+                        <td>{{ x.idGroupInfo}}</td>
+                        <td>{{ x.groupName }}</td>
+                        <td>{{ x.mapName}}</td>
+                        <td ng-if="x.undeletable==0">&nbsp;&nbsp;<button type="button"  class="btn red btn-outline"  ng-click="delGroup(x,$event)">删除</button>&nbsp;&nbsp;&nbsp;<button type="button"  class="btn purple btn-outline"  ng-click="editGroup(x,$event)">编辑</button></td>
+                        <td ng-if="x.undeletable==1" class="text-warning">&nbsp;&nbsp;&nbsp;禁止删除或编辑</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+        <button type="button" class="btn blue" ng-click="addGroup()" ng-show="isAdmin">添加用户组</button>
+    </div>
+</div>
+<!-- END CONTENT BODY -->

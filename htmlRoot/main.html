@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
+Version: 4.7
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增删改查示例</title>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/font.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/ngDialog/css/ngDialog.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/ngDialog/css/ngDialog-theme-plain.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/ngDialog/css/ngDialog-custom-width.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="assets/layouts/layout/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body ng-app='routingDemoApp' class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <div class="page-wrapper" id="divMainBody">
+        <!-- BEGIN HEADER -->
+        <div id="share_header"></div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <div id="share_sidebar" />
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div style="margin-left: 160px" ng-view class="page-content">
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+
+        </div>
+
+        <!-- BEGIN FOOTER -->
+        <div id="share_footer"></div>
+        <!-- END FOOTER -->
+    </div>
+
+    <!-- BEGIN ANGULAR -->
+    <script src="assets/global/plugins/angular-1.6.5/angular.min.js"></script>
+    <script src="assets/global/plugins/angular-1.6.5/angular-route.min.js"></script>
+    <script src="assets/global/plugins/angular-1.6.5/angular-sanitize.min.js"></script>
+    <script src="controller/mainController.js"></script>
+    <!-- BEGIN My Controller -->
+    <script src="controller/warningController.js"></script>
+    <script src="controller/warningHistoryController.js"></script>
+    <script src="controller/mapEditController.js"></script>
+    <script src="controller/vibrationFiberController.js"></script>
+    <script src="controller/relayDeviceController.js"></script>
+    <script src="controller/infraredSensorController.js"></script>
+    <script src="controller/cameraDeviceController.js"></script>
+    <script src="controller/userListController.js"></script>
+    <script src="controller/userGroupController.js"></script>
+    <script src="controller/UnknownController.js"></script>
+    <!-- END My Controller -->
+    <script src="controller/config.js"></script>
+    <!-- END ANGULAR -->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/ngDialog/js/ngDialog.min.js"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="../assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="assets/layouts/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+    <!-- END THEME LAYOUT SCRIPTS -->
+
+    <script>
+        //除了主页面不依赖用户权限，其它页面都有可能依赖用户权限。
+        //所以这里要防止用户访问其它页面。
+        //disable user access main page.
+        App.blockUI({
+        target: '#divMainBody'
+        });
+
+        $(document).ready(function () {
+        })
+
+        $(function(){
+        $("#share_header").load("../share/share_header.html",function () {
+            console.log("静态页面加载完成后，初始化全局对象。");
+            var url=url_prefix + "webccDemo/user/getCurrentUser.do";
+            $.post(url, function (objRes) {
+            console.log("json string(or object) is " + objRes);
+            var  jsonObj = $.parseJSON(objRes);//如果服务端接口返回的是json字符串，要转JSON对象。
+            
+            if ( jsonObj!=null && jsonObj.hasOwnProperty("code") && jsonObj.code == 0) {  
+                g_user = jsonObj;
+                g_user_authority = new Set(jsonObj.authorities.split(","));
+                $("span#spanLoginName").html(g_user.loginName);
+
+                //allow user to access main page.
+                App.unblockUI('#divMainBody');
+            }else
+            {
+                //var url=url_prefix + "webccDemo/login.do";
+                location.href="index.html";
+            }
+        }).error(function() {
+            //var url=url_prefix + "webccDemo/login.do";
+            //location.href="index.html";
+        });
+
+        //奇怪，为.sidebar-toggle挂一个空的click后，layout.js 403中的代码竟然能被回调了。
+        $("body.sidebar-toggler").click(function(){
+          console.log("这里不会被调进来。");
+        });
+        });
+        $("#share_sidebar").load("share/share_sidebar.html", function() {
+        $("#warning_menu_item").append("<span class=\"selected\"></span>");
+        $("#warning_menu_item").addClass("active open");
+
+        });
+        $("#share_footer").load("../share/share_footer.html");
+        })
+    </script>
+</body>
+</html>

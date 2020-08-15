@@ -27,7 +27,7 @@ public:
     method_ = method;
   }
 
-  const Url& url() const {
+  Url& url() {
     return url_;
   }
 

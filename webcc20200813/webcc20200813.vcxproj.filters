@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="webcc\CMakeLists.txt" />
+    <Text Include="kagula_update_log.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="webcc\config.h.example" />

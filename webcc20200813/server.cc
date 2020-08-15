@@ -324,10 +324,17 @@ bool Server::MatchViewOrStatic(const std::string& method,
   // Try to match a static file.
   if (method == methods::kGet && !doc_root_.empty()) {
     boost::filesystem::path path = doc_root_ / url;
+
+    if (url == "/")
+    {
+        path = doc_root_ / "index.html";
+    }
+
     if (!sfs::is_directory(path) && sfs::exists(path)) {
       return true;
     }
   }
+
 
   return false;
 }
