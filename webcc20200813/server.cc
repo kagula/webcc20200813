@@ -12,6 +12,8 @@
 
 #include <boost/algorithm/string.hpp>
 
+#include "sessionSupport.h"
+
 namespace sfs = boost::filesystem;
 
 using tcp = asio::ip::tcp;
@@ -169,7 +171,7 @@ void Server::AsyncAccept() {
 
       using namespace std::placeholders;
       auto view_matcher =
-          std::bind(&Server::MatchViewOrStatic, this, _1, _2, _3);
+          std::bind(&Server::MatchViewOrStatic, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 
       auto connection = std::make_shared<Connection>(
           std::move(socket), &pool_, &queue_, std::move(view_matcher));
@@ -281,31 +283,62 @@ void Server::Handle(ConnectionPtr connection) {
     return;
   }
 
-  // Save the (regex matched) URL args to request object.
-  request->set_args(args);
+  //对Http request的进一步解析.begin
+  {
+      // Save the (regex matched) URL args to request object.
+      request->set_args(args);
 
-  // parseRequest
-  [](webcc::RequestPtr req) {
-    std::string content_type = req->GetHeader("Content-Type");
-    const char destContentType[] = { "application/x-www-form-urlencoded" };
-    if (strncmp(content_type.c_str(), destContentType, strlen(destContentType)) == 0) {
-        std::string body = req->data();
-        if (body.empty() == false) {
-          std::vector<std::string> vecRec;
-          boost::split(vecRec, body, boost::is_any_of("&"));
-          for (size_t i = 0; i < vecRec.size(); i++) {
-            std::vector<std::string> record;
-            boost::split(record, vecRec[i], boost::is_any_of("="));
-            if (record.size() == 2) {
-              req->kagulaArgs_[record[0]] = record[1];
-            }
+      // parseRequest
+      [](webcc::RequestPtr req) {
+          std::string content_type = req->GetHeader("Content-Type");
+          const char destContentType[] = { "application/x-www-form-urlencoded" };
+          if (strncmp(content_type.c_str(), destContentType, strlen(destContentType)) == 0) {
+              std::string body = req->data();
+              if (body.empty() == false) {
+                  std::vector<std::string> vecRec;
+                  boost::split(vecRec, body, boost::is_any_of("&"));
+                  for (size_t i = 0; i < vecRec.size(); i++) {
+                      std::vector<std::string> record;
+                      boost::split(record, vecRec[i], boost::is_any_of("="));
+                      if (record.size() == 2) {
+                          req->kagulaArgs_[record[0]] = record[1];
+                      }
+                  }
+              }
+          }//end "application/x-www-form-urlencoded"
+      }(request);
+
+
+      //如果不存在cookie設置它
+      [](webcc::RequestPtr req)
+      {
+          //只在Post方法基礎上支持Cookie!
+		  if (req->method() == "POST")
+          {
+              //如果已经存在session id then 返回已经存在的, 否则, 新分配一个session id.
+              req->kagulaArgs_[kagula::session_key] = kagula::SessionSupport::Instance().parseReq(req->GetHeader(kagula::req_cookie));
           }
-        }
-    }
-  }(request);
+
+      }(request);
+
+  }//对Http request的进一步解析.end
 
   // Ask the matched view to process the request.
-  ResponsePtr response = view->Handle(request);
+
+
+  //设置cookie
+  ResponsePtr response;
+  if (request->kagulaArgs_[kagula::session_key].empty() == false)
+  {
+      response = view->Handle(request, kagula::SessionSupport::Instance().getSessionInfo(request->kagulaArgs_[kagula::session_key]));
+
+      response->SetHeader(kagula::reply_set_cookie, kagula::SessionSupport::Instance().getSetCookieValue(request->kagulaArgs_[kagula::session_key]));
+  }
+  else
+  {
+      boost::shared_ptr<kagula::SessionInfo> pSI;
+      response = view->Handle(request, pSI);
+  }
 
   // Send the response back.
   if (response) {

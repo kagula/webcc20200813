@@ -3,8 +3,11 @@
 
 #include <memory>
 
+#include <boost/shared_ptr.hpp>
+
 #include "webcc/request.h"
 #include "webcc/response.h"
+#include "sessionInfo.h"
 
 namespace webcc {
 
@@ -12,7 +15,7 @@ class View {
 public:
   virtual ~View() = default;
 
-  virtual ResponsePtr Handle(RequestPtr request) = 0;
+  virtual ResponsePtr Handle(RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) = 0;
 
   // Return true if you want the request data of the given method to be streamed
   // to a temp file. Data streaming is useful for receiving large data, e.g.,

@@ -21,15 +21,6 @@
     <ClInclude Include="webcc\body.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="webcc\client.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\client_pool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\client_session.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="webcc\common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -102,6 +93,12 @@
     <ClInclude Include="webcc\view.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sessionSupport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sessionInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="webcc\CMakeLists.txt" />
@@ -116,15 +113,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="body.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="client.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="client_pool.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="client_session.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="common.cc">
@@ -185,6 +173,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="utility.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sessionSupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sessionInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

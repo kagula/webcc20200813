@@ -19,49 +19,27 @@ public:
 
   ~Request() override = default;
 
-  const std::string& method() const {
-    return method_;
-  }
+  const std::string& method() const {    return method_;  }
 
-  void set_method(const std::string& method) {
-    method_ = method;
-  }
+  void set_method(const std::string& method) {    method_ = method;  }
 
-  Url& url() {
-    return url_;
-  }
+  Url& url() {    return url_;  }
 
-  void set_url(Url&& url) {
-    url_ = std::move(url);
-  }
+  void set_url(Url&& url) {    url_ = std::move(url);  }
 
-  const std::string& host() const {
-    return url_.host();
-  }
+  const std::string& host() const {    return url_.host();  }
 
-  const std::string& port() const {
-    return url_.port();
-  }
+  const std::string& port() const {    return url_.port();  }
 
-  UrlQuery query() const {
-    return UrlQuery(url_.query());
-  }
+  UrlQuery query() const {    return UrlQuery(url_.query());  }
 
-  const UrlArgs& args() const {
-    return args_;
-  }
+  const UrlArgs& args() const {    return args_;  }
 
-  void set_args(const UrlArgs& args) {
-    args_ = args;
-  }
+  void set_args(const UrlArgs& args) {    args_ = args;  }
 
-  const std::string& ip() const {
-    return ip_;
-  }
+  const std::string& ip() const {    return ip_;  }
 
-  void set_ip(const std::string& ip) {
-    ip_ = ip;
-  }
+  void set_ip(const std::string& ip) {    ip_ = ip;  }
 
   // Check if the body is a multi-part form data.
   bool IsForm() const;
@@ -84,7 +62,7 @@ private:
 
   // The URL regex matched arguments (usually resource ID's).
   // Used by server only.
-  UrlArgs args_;
+  UrlArgs args_;//什么样的Http请求格式才会出现args_有待分析!
 
   // Client IP address.
   std::string ip_;

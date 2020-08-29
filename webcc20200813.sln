@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webcc20200813", "webcc20200813\webcc20200813.vcxproj", "{E476C29D-37C2-463E-9B9F-2FB559E8FECE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webccDemo", "webccDemo\webccDemo.vcxproj", "{86C7EA54-7E00-40CF-ADA4-8E437C70AF62}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E476C29D-37C2-463E-9B9F-2FB559E8FECE} = {E476C29D-37C2-463E-9B9F-2FB559E8FECE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="sessionInfo.h" />
+    <ClInclude Include="sessionSupport.h" />
     <ClInclude Include="webcc\base64.h" />
     <ClInclude Include="webcc\body.h" />
-    <ClInclude Include="webcc\client.h" />
-    <ClInclude Include="webcc\client_pool.h" />
-    <ClInclude Include="webcc\client_session.h" />
     <ClInclude Include="webcc\common.h" />
     <ClInclude Include="webcc\config.h" />
     <ClInclude Include="webcc\connection.h" />
@@ -60,9 +59,6 @@
   <ItemGroup>
     <ClCompile Include="base64.cc" />
     <ClCompile Include="body.cc" />
-    <ClCompile Include="client.cc" />
-    <ClCompile Include="client_pool.cc" />
-    <ClCompile Include="client_session.cc" />
     <ClCompile Include="common.cc" />
     <ClCompile Include="connection.cc" />
     <ClCompile Include="connection_pool.cc" />
@@ -79,6 +75,8 @@
     <ClCompile Include="response_parser.cc" />
     <ClCompile Include="router.cc" />
     <ClCompile Include="server.cc" />
+    <ClCompile Include="sessionInfo.cpp" />
+    <ClCompile Include="sessionSupport.cpp" />
     <ClCompile Include="socket.cc" />
     <ClCompile Include="string.cc" />
     <ClCompile Include="url.cc" />
