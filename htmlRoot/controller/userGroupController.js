@@ -18,7 +18,7 @@ function initAngularUserGroupController()
                 $scope.listGroup = result.data;
             });
         */
-        $http.post("DAS2017/userGroup/list.do")
+        $http.post("webccDemo/userGroup/list.do")
             .then(function (result) {
                 if(result.data.code==0)
                 {
@@ -50,7 +50,7 @@ function initAngularUserGroupController()
                             $.ajax({
                                 type: "POST",
                                 contentType:"application/json",
-                                url: "DAS2017/userGroup/del.do",
+                                url: "webccDemo/userGroup/del.do",
                                 data: JSON.stringify(jsonReq),
                                 success: function (data) {
                                     if(data.code==0)
@@ -104,7 +104,7 @@ function initAngularUserGroupController()
                             return;
                         }
 
-                        $.post('/DAS2017/userGroup/isExist.do', 'groupName='+$scope.ngDialogData.groupName,function (result) {
+                        $.post('/webccDemo/userGroup/isExist.do', 'groupName='+$scope.ngDialogData.groupName,function (result) {
                             objRes = JSON.parse(result);
                             if(objRes!=null && objRes.hasOwnProperty("code") && objRes.code==0 && objRes.isExist==1)
                             {
@@ -121,7 +121,7 @@ function initAngularUserGroupController()
                         }).error(function() { console.log("network error"); });
                     };
                     //初始化map select控件
-                    $http.post("DAS2017/map/list.do")
+                    $http.post("webccDemo/map/list.do")
                         .then(function (result) {
                             if(result.data.code==0 && result.data.list.length>0)
                             {
@@ -163,7 +163,7 @@ function initAngularUserGroupController()
                         $.ajax({
                             type: "POST",
                             contentType:"application/json",
-                            url: "DAS2017/userGroup/update.do",
+                            url: "webccDemo/userGroup/update.do",
                             data: JSON.stringify(jsonReq),
                             success: function (data) {
                                 if(data.code==0)

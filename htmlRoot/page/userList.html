@@ -1,7 +1,8 @@
 <!-- BEGIN CONTENT BODY -->
 <!-- BEGIN PAGE HEADER-->
 <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title"> 用户管理
+<h1 class="page-title">
+    用户管理
     <small>用户信息</small>
 </h1>
 <!-- END PAGE TITLE-->
@@ -22,7 +23,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="btn-group">
-                                <button id="btnAddNewuser" class="btn green"> 添加新用户
+                                <button id="btnAddNewuser" class="btn green">
+                                    添加新用户
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
@@ -31,36 +33,36 @@
                 </div>
                 <table class="table table-striped table-hover table-bordered" id="mainTable">
                     <thead>
-                    <tr>
-                        <th> # </th>
-                        <th> 帐号 </th>
-                        <th> 所属用户组 </th>
-                        <th> 操作 </th>
-                    </tr>
+                        <tr>
+                            <th> # </th>
+                            <th> 帐号 </th>
+                            <th> 所属用户组 </th>
+                            <th> 操作 </th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="x in listUser">
                             <td>{{ x.id}}</td>
                             <td>{{ x.loginName }}</td>
                             <td>{{ x.groupName }}</td>
-                            <td ng-if="x.isEditable==1">&nbsp;&nbsp;<button type="button"  class="btn red btn-outline"  ng-click="delUser(x,$event)">删除</button>&nbsp;&nbsp;&nbsp;<button type="button"  class="btn purple btn-outline"  ng-click="editUser(x,$event)">编辑</button></td>
-                            <td ng-if="x.isEditable==0">&nbsp;&nbsp;<button type="button"  class="btn blue btn-outline"  ng-click="viewUser(x,$event)">查看</button></td>
+                            <td ng-if="x.isEditable==1">&nbsp;&nbsp;<button type="button" class="btn red btn-outline" ng-click="delUser(x,$event)">删除</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn purple btn-outline" ng-click="editUser(x,$event)">编辑</button></td>
+                            <td ng-if="x.isEditable==0">&nbsp;&nbsp;<button type="button" class="btn blue btn-outline" ng-click="viewUser(x,$event)">查看</button></td>
                         </tr>
-                    <!--
-                    <tr>
-                        <td onclick="javascript:userinfo(9);"> 1 </td>
-                        <td onclick="javascript:userinfo(9);"> Lisa Wong </td>
-                        <td class="center">
-                            <select  class="form-control input-sm select2-multiple">
-                                <option value="AK">管理员</option>
-                                <option value="HI" disabled="disabled">观察员</option>
-                            </select>
-                        </td>
-                        <td>
-                            <a class="delete" href="javascript:;"> Delete </a>
-                        </td>
-                    </tr>
-                    -->
+                        <!--
+                        <tr>
+                            <td onclick="javascript:userinfo(9);"> 1 </td>
+                            <td onclick="javascript:userinfo(9);"> Lisa Wong </td>
+                            <td class="center">
+                                <select  class="form-control input-sm select2-multiple">
+                                    <option value="AK">管理员</option>
+                                    <option value="HI" disabled="disabled">观察员</option>
+                                </select>
+                            </td>
+                            <td>
+                                <a class="delete" href="javascript:;"> Delete </a>
+                            </td>
+                        </tr>
+                        -->
                     </tbody>
                 </table>
             </div>

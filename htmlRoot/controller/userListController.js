@@ -17,11 +17,11 @@ function initAugularUserListController()
                 $scope.listUser = result.data;
             });
 */
-        $http.post("DAS2017/user/listAll.do")
+        $http.post("webccDemo/user/listAll.do")
             .then(function (result) {
                 if(result.data.code==0)
                 {
-                    console.log("userListController .../DAS2017/user/listAll.do");
+                    console.log("userListController .../webccDemo/user/listAll.do");
                     for(i=0;i<result.data.list.length;i++)
                     {
                         if(result.data.list[i].loginName=="admin")
@@ -60,7 +60,7 @@ function initAugularUserListController()
                             $.ajax({
                                 type: "POST",
                                 contentType:"application/json",
-                                url: "DAS2017/user/del.do",
+                                url: "webccDemo/user/del.do",
                                 data: JSON.stringify(jsonReq),
                                 success: function (data) {
                                     if(data.code==0)
@@ -108,7 +108,7 @@ function initAugularUserListController()
                     //model popup 前可以在这里初始化数据。
 
                     //用户组
-                    $http.post("DAS2017/userGroup/list.do")
+                    $http.post("webccDemo/userGroup/list.do")
                         .then(function (result) {
                             if( result.data.code == 0 && result.data.list.length > 0 )
                             {
@@ -173,13 +173,13 @@ function initAugularUserListController()
                             $.ajax({
                                 type: "POST",
                                 contentType:"application/json",
-                                url: "DAS2017/user/saveEdit.do",
+                                url: "webccDemo/user/saveEdit.do",
                                 data: JSON.stringify(jsonReq),
                                 success: function (data) {
                                     if(data.code==0)
                                     {
                                         console.log("如果修改用户信息成功，刷新列表。");
-                                        $http.post("DAS2017/user/listAll.do")
+                                        $http.post("webccDemo/user/listAll.do")
                                             .then(function (result) {
                                                 if(result.data.code==0)
                                                 {
@@ -242,7 +242,7 @@ function initAugularUserListController()
                 data: $scope.myJSONObject,
                 controller: ['$scope', function($scope) {
                     //用户组
-                    $http.post("DAS2017/userGroup/list.do")
+                    $http.post("webccDemo/userGroup/list.do")
                         .then(function (result) {
                             if( result.data.code == 0 && result.data.list.length > 0 )
                             {
@@ -274,11 +274,11 @@ function initAugularUserListController()
                     //here can not access html element.by JQuery selector
 
                     //用户组
-                    $http.post("DAS2017/userGroup/list.do")
+                    $http.post("webccDemo/userGroup/list.do")
                         .then(function (result) {
                             if(result.data.code==0 && result.data.list.length>0)
                             {
-                                console.log("userListController->添加用户->.../DAS2017/userGroup/list.do");
+                                console.log("userListController->添加用户->.../webccDemo/userGroup/list.do");
                                 $scope.listGroup = result.data.list;
                                 g_listUserGroup = result.data.list;
                                 $scope.ngDialogData.myUserGroup = result.data.list[0].groupName;
@@ -297,7 +297,7 @@ function initAugularUserListController()
                             return;
                         }
 
-                        $.post('/DAS2017/user/isExist.do', 'loginName='+$scope.ngDialogData.account,function (result) {
+                        $.post('/webccDemo/user/isExist.do', 'loginName='+$scope.ngDialogData.account,function (result) {
                             objRes = JSON.parse(result);
                             if(objRes!=null && objRes.hasOwnProperty("code") && objRes.code==0)
                             {
@@ -384,17 +384,17 @@ function initAugularUserListController()
                         $.ajax({
                             type: "POST",
                             contentType:"application/json",
-                            url: "DAS2017/user/add.do",
+                            url: "webccDemo/user/add.do",
                             data: JSON.stringify(jsonReq),
                             success: function (data) {
                                 if(data.code==0)
                                 {
                                     console.log("如果添加用户成功，刷新列表。");
-                                    $http.post("DAS2017/user/listAll.do")
+                                    $http.post("webccDemo/user/listAll.do")
                                         .then(function (result) {
                                             if(result.data.code==0)
                                             {
-                                                console.log("userListController .../DAS2017/user/listAll.do");
+                                                console.log("userListController .../webccDemo/user/listAll.do");
                                                 for(i=0;i<result.data.list.length;i++)
                                                 {
                                                     if(result.data.list[i].loginName=="admin")

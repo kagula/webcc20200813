@@ -1,5 +1,6 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <regex>
+
 
 #include "../webcc20200813/webcc/logger.h"
 #include "../webcc20200813/webcc/response_builder.h"
@@ -7,139 +8,170 @@
 
 #include "sessionSupport.h"
 
+#include "fakeDB.h"
+
 class HelloView : public webcc::View {
 public:
-    webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
-        if (request->method() == "GET") {
-            return webcc::ResponseBuilder{}.OK().Body("Hello, World!   My name is WebCC!")();
-        }
+	webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
+		if (request->method() == "GET") {
+			return webcc::ResponseBuilder{}.OK().Body("Hello, World!   My name is WebCC!")();
+		}
 
-        return {};
-    }
+		return {};
+	}
 };
 
 class UserView : public webcc::View {
 public:
-    webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
-        using namespace std;
-        const string& path = request->url().path();
+	webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
+		using namespace std;
+		const string& path = request->url().path();
 
-        regex rex("/webccDemo/user/(\\w+).do");
-        smatch what;
+		regex rex("/webccDemo/user/(\\w+).do");
+		smatch what;
 
-        if (!regex_match(path, what, rex))
-        {
-            return {};
-        }
+		if (!regex_match(path, what, rex))
+		{
+			return {};
+		}
 
-        webcc::ResponsePtr rp;
-        string path2 = what[1];
-        if (path2.empty())
-        {
-            return {};
-        }
+		webcc::ResponsePtr rp;
+		string path2 = what[1];
+		if (path2.empty())
+		{
+			return {};
+		}
 
-        if (path2 == "login")
-        {
-            rp = onLogin(request, pSI);
-        }
-        else if (path2 == "logout")
-        {
-            rp = onLogout(request, pSI);
-        }
-        else if (path2 == "getInfo")
-        {
-            rp = onGetInfo(request, pSI);
-        }
-        else
-        {
-            return {};
-        }
+		if (path2 == "login")
+		{
+			rp = onLogin(request, pSI);
+		}
+		else if (path2 == "logout")
+		{
+			rp = onLogout(request, pSI);
+		}
+		else if (path2 == "getInfo")
+		{
+			rp = onGetInfo(request, pSI);
+		}
+		else if (path2 == "listAll")
+		{
+			rp = onListAll(request, pSI);
+		}
+		else
+		{
+			return {};
+		}
 
-        //ÔÊĞí¿çÓò·ÃÎÊ±¾½Ó¿Ú.  ÕâÀï×îºÃÃ÷È·Ğ´³öÔÊĞíµÄÓòÃû;
-        webcc::Header header("Access-Control-Allow-Origin", "*");
-        rp->SetHeader(std::move(header));
 
-        return rp;
-    };
+		//å…è®¸è·¨åŸŸè®¿é—®æœ¬æ¥å£.  è¿™é‡Œæœ€å¥½æ˜ç¡®å†™å‡ºå…è®¸çš„åŸŸå;
+		webcc::Header header("Access-Control-Allow-Origin", "*");
+		rp->SetHeader(std::move(header));
+
+		return rp;
+	};
 private:
-    webcc::ResponsePtr onLogin(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
-    {
-        webcc::ResponsePtr rp;
+	webcc::ResponsePtr onLogin(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
 
-        if ((request->kagulaArgs_.find("username") != request->kagulaArgs_.end()) &&
-            (request->kagulaArgs_.find("password") != request->kagulaArgs_.end()))
-        {
-            //Òª°ÑÀÏµÄconsole½oêPé], ·ñ„tÒ»ÓĞ–|Î÷İ”³öµ½std::cout¾Q³Ì¾Í•ş×èÈû!
-            std::cout << "username:" << request->kagulaArgs_["username"].c_str() << std::endl;
-            std::cout << "password:" << request->kagulaArgs_["password"].c_str() << std::endl;
+		if ((request->kagulaArgs_.find("username") != request->kagulaArgs_.end()) &&
+			(request->kagulaArgs_.find("password") != request->kagulaArgs_.end()))
+		{
+			//è¦æŠŠè€çš„consoleçµ¦é—œé–‰, å¦å‰‡ä¸€æœ‰æ±è¥¿è¼¸å‡ºåˆ°std::coutç¶«ç¨‹å°±æœƒé˜»å¡!
+			std::cout << "username:" << request->kagulaArgs_["username"].c_str() << std::endl;
+			std::cout << "password:" << request->kagulaArgs_["password"].c_str() << std::endl;
 
-            //ÔOÖÃsession
-            boost::shared_ptr<kagula::SessionInfo> pSI = kagula::SessionSupport::Instance().getSessionInfo(request->kagulaArgs_[kagula::session_key]);
-            pSI->session["username"] = request->kagulaArgs_["username"];
+			//è¨­ç½®session
+			boost::shared_ptr<kagula::SessionInfo> pSI = kagula::SessionSupport::Instance().getSessionInfo(request->kagulaArgs_[kagula::session_key]);
+			pSI->session["username"] = request->kagulaArgs_["username"];
 
-            //ÔOÖÃ·µ»ØÄÚÈİ
-            rp = webcc::ResponseBuilder{}.Json().Body("{\"ok\":1, \"message\":\"success\"}")();//XX.Json().XXÖ§³Öjavascript $.ajaxÓï·¨, µ«ÊÇ²»Ö§³Öjavascript $.postÓï·¨!
-        }
-        else
-        {
-            rp = webcc::ResponseBuilder{}.Json().Body("{\"ok\":0, \"message\":\"none exist username or password!\"}")();//XX.Json().XXÖ§³Öjavascript $.ajaxÓï·¨, µ«ÊÇ²»Ö§³Öjavascript $.postÓï·¨!
-        }
+			//è¨­ç½®è¿”å›å†…å®¹
+			rp = webcc::ResponseBuilder{}.Json().Body("{\"ok\":1, \"message\":\"success\"}")();//XX.Json().XXä¸æ”¯æŒjavascript $.postè¯­æ³•!
+		}
+		else
+		{
+			rp = webcc::ResponseBuilder{}.Json().Body("{\"ok\":0, \"message\":\"none exist username or password!\"}")();//XX.Json().XXä¸æ”¯æŒjavascript $.postè¯­æ³•!
+		}
 
-        return rp;
-    };
+		return rp;
+	};
 
-    webcc::ResponsePtr onLogout(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
-    {
-        if (pSI != nullptr)
-        {
-            //Çå³ıÓÃ»§ĞÅÏ¢
-            pSI->session["username"] = "";
-        }
+	webcc::ResponsePtr onLogout(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		if (pSI != nullptr)
+		{
+			//æ¸…é™¤ç”¨æˆ·ä¿¡æ¯
+			pSI->session["username"] = "";
+		}
 
-        webcc::ResponsePtr rp;
+		webcc::ResponsePtr rp;
 
-        //·µ»Ø×Ö·û´®, ÔÚchrome¿Í»§¶ËÖĞµÃµ÷ÓÃ×Ö·û´®×ªjson¶ÔÏóº¯Êı.
-        rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0}")();//XX.Json().XXÖ§³Öjavascript $.postµ÷ÓÃ.
+		//è¿”å›å­—ç¬¦ä¸², åœ¨chromeå®¢æˆ·ç«¯ä¸­å¾—è°ƒç”¨å­—ç¬¦ä¸²è½¬jsonå¯¹è±¡å‡½æ•°.
+		rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0}")();//XX.Json().XXæ”¯æŒjavascript $.postè°ƒç”¨.
 
-        return rp;
-    };
+		return rp;
+	};
 
-    webcc::ResponsePtr onGetInfo(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
-    {
-        webcc::ResponsePtr rp;
+	webcc::ResponsePtr onGetInfo(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
 
-        //ÔOÖÃsession
-        if (pSI->session.find("username") != pSI->session.end() && pSI->session["username"].empty() == false)
-        {
-            /*
-            * ÕâÀï²»ÄÜÊ¹ÓÃwebcc::ResponseBuilder{}.Json()ÕâÑùµÄĞÎÊ½·µ»Ø½á¹û
-            * ·ñÔòJavaScriptÖĞ$.Post·½Ê½callback function²»»á±»»Øµ÷
-            */
-            rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0, \"loginName\":\"" + pSI->session["username"] + "\", \"authorities\":\"admin\"}")();
-        }
-        else
-        {
-            rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0, \"loginName\":\"Unknown\", \"authorities\":\"admin\"}")();
-        }
+		//è¨­ç½®session
+		if (pSI->session.find("username") != pSI->session.end() && pSI->session["username"].empty() == false)
+		{
+			/*
+			* è¿™é‡Œä¸èƒ½ä½¿ç”¨webcc::ResponseBuilder{}.Json()è¿™æ ·çš„å½¢å¼è¿”å›ç»“æœ
+			* å¦åˆ™JavaScriptä¸­$.Postæ–¹å¼callback functionä¸ä¼šè¢«å›è°ƒ
+			*/
+			if (pSI->session["username"] == "admin")
+			{
+				rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0, \"loginName\":\"" + pSI->session["username"] + "\", \"authorities\":\"ROLE_ADMIN\"}")();
+			}
+			else
+			{
+				rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0, \"loginName\":\"" + pSI->session["username"] + "\", \"authorities\":\"ROLE_USER\"}")();
+			}
+		}
+		else
+		{
+			rp = webcc::ResponseBuilder{}.OK().Body("{\"code\":0, \"loginName\":\"Unknown\", \"authorities\":\"admin\"}")();
+		}
 
-        return rp;
-    };
+		return rp;
+	};
+
+	webcc::ResponsePtr onListAll(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
+		bool isAdmin = false;
+
+		if (pSI->session["username"] == "admin")
+		{
+			isAdmin = true;
+		}
+
+		std::shared_ptr<std::string> pStr = FakeDB::Inst().getUserListAll(isAdmin);
+
+		rp = webcc::ResponseBuilder{}.Body(pStr->c_str()).Json().Utf8()();
+
+		return rp;
+	};
 };
 
 int main() {
-    try {
-        webcc::Server server(8080,"C:\\Users\\chenlu-li\\source\\repos\\webcc20200813\\htmlRoot");
+	try {
+		webcc::Server server(8080, "C:\\Users\\chenlu-li\\source\\repos\\webcc20200813\\htmlRoot");
 
-        //server.Route("/", std::make_shared<HelloView>());
+		//server.Route("/", std::make_shared<HelloView>());
 
-        server.Route(webcc::UrlRegex("/webccDemo/user/(\\w+).do"), std::make_shared<UserView>(), { "POST" });
-        server.Run();
+		server.Route(webcc::UrlRegex("/webccDemo/user/(\\w+).do"), std::make_shared<UserView>(), { "POST" });
+		server.Run();
 
-    }
-    catch (const std::exception&) {
-        return 1;
-    }
+	}
+	catch (const std::exception&) {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }

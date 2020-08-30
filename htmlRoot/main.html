@@ -125,7 +125,7 @@ License: You must have a valid license purchased only from themeforest(the above
         $(function(){
         $("#share_header").load("../share/share_header.html",function () {
             console.log("静态页面加载完成后，初始化全局对象。");
-            var url=url_prefix + "webccDemo/user/getCurrentUser.do";
+            var url=url_prefix + "webccDemo/user/getInfo.do";
             $.post(url, function (objRes) {
             console.log("json string(or object) is " + objRes);
             var  jsonObj = $.parseJSON(objRes);//如果服务端接口返回的是json字符串，要转JSON对象。
