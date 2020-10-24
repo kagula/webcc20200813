@@ -298,7 +298,8 @@ function initAugularUserListController()
                         }
 
                         $.post('/webccDemo/user/isExist.do', 'loginName='+$scope.ngDialogData.account,function (result) {
-                            objRes = JSON.parse(result);
+                            //objRes = JSON.parse(result);
+                            objRes = result;
                             if(objRes!=null && objRes.hasOwnProperty("code") && objRes.code==0)
                             {
                                 console.log("exist " + $scope.ngDialogData.account);

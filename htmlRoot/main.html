@@ -78,11 +78,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN My Controller -->
     <script src="controller/warningController.js"></script>
     <script src="controller/warningHistoryController.js"></script>
-    <script src="controller/mapEditController.js"></script>
-    <script src="controller/vibrationFiberController.js"></script>
-    <script src="controller/relayDeviceController.js"></script>
-    <script src="controller/infraredSensorController.js"></script>
-    <script src="controller/cameraDeviceController.js"></script>
     <script src="controller/userListController.js"></script>
     <script src="controller/userGroupController.js"></script>
     <script src="controller/UnknownController.js"></script>
@@ -124,32 +119,32 @@ License: You must have a valid license purchased only from themeforest(the above
 
         $(function(){
         $("#share_header").load("../share/share_header.html",function () {
-            console.log("静态页面加载完成后，初始化全局对象。");
-            var url=url_prefix + "webccDemo/user/getInfo.do";
-            $.post(url, function (objRes) {
-            console.log("json string(or object) is " + objRes);
-            var  jsonObj = $.parseJSON(objRes);//如果服务端接口返回的是json字符串，要转JSON对象。
-            
-            if ( jsonObj!=null && jsonObj.hasOwnProperty("code") && jsonObj.code == 0) {  
-                g_user = jsonObj;
-                g_user_authority = new Set(jsonObj.authorities.split(","));
-                $("span#spanLoginName").html(g_user.loginName);
+        console.log("静态页面加载完成后，初始化全局对象。");
+        var url=url_prefix + "webccDemo/user/getInfo.do";
+        $.post(url, function (objRes) {
+        console.log("json string(or object) is " + objRes);
+        var  jsonObj = $.parseJSON(objRes);//如果服务端接口返回的是json字符串，要转JSON对象。
 
-                //allow user to access main page.
-                App.unblockUI('#divMainBody');
-            }else
-            {
-                //var url=url_prefix + "webccDemo/login.do";
-                location.href="index.html";
-            }
+        if ( jsonObj!=null && jsonObj.hasOwnProperty("code") && jsonObj.code == 0) {
+        g_user = jsonObj;
+        g_user_authority = new Set(jsonObj.authorities.split(","));
+        $("span#spanLoginName").html(g_user.loginName);
+
+        //allow user to access main page.
+        App.unblockUI('#divMainBody');
+        }else
+        {
+        //var url=url_prefix + "webccDemo/login.do";
+        location.href="index.html";
+        }
         }).error(function() {
-            //var url=url_prefix + "webccDemo/login.do";
-            //location.href="index.html";
+        //var url=url_prefix + "webccDemo/login.do";
+        //location.href="index.html";
         });
 
         //奇怪，为.sidebar-toggle挂一个空的click后，layout.js 403中的代码竟然能被回调了。
         $("body.sidebar-toggler").click(function(){
-          console.log("这里不会被调进来。");
+        console.log("这里不会被调进来。");
         });
         });
         $("#share_sidebar").load("share/share_sidebar.html", function() {

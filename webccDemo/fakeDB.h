@@ -1,4 +1,4 @@
-#ifndef _FAKEDB_H_
+﻿#ifndef _FAKEDB_H_
 #define _FAKEDB_H_
 
 #ifdef _WIN32
@@ -46,7 +46,13 @@ public:
 	static FakeDB& Inst();
 
 	std::shared_ptr<std::string> getUserListAll(bool isAdmin);
+	std::shared_ptr<std::string> getUserGroupList(bool isAdmin);
 
+	bool updateUserInfo(std::string jsonNewUserInfo);
+	bool addUser(std::string jsonNewUserInfo);
+	bool delUserByID(std::string jsonUserID);
+	bool isLogin(std::string& username, std::string& password) const;
+	bool isUserExist(std::string jsonLoginName) const;
 protected:
 	std::list<UserInfo> _userList;
 	std::list<GroupInfo> _groupList;
@@ -55,7 +61,6 @@ protected:
 	std::mutex _lock;
 
 	const char* getGroupNameByGroupID(unsigned int id) const;
-
 private:
 	FakeDB(); // Private constructor
 	FakeDB(const FakeDB&) {} // Prevent copy-construction

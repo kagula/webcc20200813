@@ -13,6 +13,10 @@ function initAngular()
     console.log('main.html init');
     app = angular.module('routingDemoApp',['ngRoute','ngSanitize','ngDialog']);
 
+    app.config(['$qProvider', function ($qProvider) {
+      $qProvider.errorOnUnhandledRejections(false);
+    }]);
+
 //这里我很起奇怪 focusMe 为什么要映射成 focus-me 这个属性名字。
     app.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse) {
         return {

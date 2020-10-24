@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <regex>
-
+#include <memory>
 
 #include "../webcc20200813/webcc/logger.h"
 #include "../webcc20200813/webcc/response_builder.h"
@@ -18,6 +18,57 @@ public:
 		}
 
 		return {};
+	}
+};
+
+class GroupView : public webcc::View {
+public:
+	webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
+		using namespace std;
+		const string& path = request->url().path();
+
+		regex rex("/webccDemo/userGroup/(\\w+).do");
+		smatch what;
+
+		if (!regex_match(path, what, rex))
+		{
+			return {};
+		}
+
+		webcc::ResponsePtr rp;
+		string path2 = what[1];
+		if (path2.empty())
+		{
+			return {};
+		}
+
+		if (path2 == "list")
+		{
+			rp = onList(request, pSI);
+		}
+		else
+		{
+			return {};
+		}
+
+		return rp;
+	}
+protected:
+	webcc::ResponsePtr onList(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
+		bool isAdmin = false;
+
+		if (pSI->session["username"] == "admin")
+		{
+			isAdmin = true;
+		}
+
+		std::shared_ptr<std::string> pStr = FakeDB::Inst().getUserGroupList(isAdmin);
+
+		rp = webcc::ResponseBuilder{}.Body(pStr->c_str()).Json().Utf8()();
+
+		return rp;
 	}
 };
 
@@ -58,6 +109,22 @@ public:
 		{
 			rp = onListAll(request, pSI);
 		}
+		else if (path2 == "saveEdit")
+		{
+			rp = onSaveEdit(request, pSI);
+		}
+		else if (path2 == "add")
+		{
+			rp = onAdd(request, pSI);
+		}
+		else if (path2 == "del")
+		{
+			rp = onDel(request, pSI);
+		}
+		else if (path2 == "isExist")
+		{
+			rp = isExist(request, pSI);
+		}
 		else
 		{
 			return {};
@@ -76,7 +143,8 @@ private:
 		webcc::ResponsePtr rp;
 
 		if ((request->kagulaArgs_.find("username") != request->kagulaArgs_.end()) &&
-			(request->kagulaArgs_.find("password") != request->kagulaArgs_.end()))
+			(request->kagulaArgs_.find("password") != request->kagulaArgs_.end()) &&
+			FakeDB::Inst().isLogin(request->kagulaArgs_["username"], request->kagulaArgs_["password"]))
 		{
 			//要把老的console給關閉, 否則一有東西輸出到std::cout綫程就會阻塞!
 			std::cout << "username:" << request->kagulaArgs_["username"].c_str() << std::endl;
@@ -157,6 +225,102 @@ private:
 
 		return rp;
 	};
+
+	webcc::ResponsePtr onSaveEdit(webcc::RequestPtr req, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
+
+		std::string content_type = req->GetHeader("Content-Type");
+		const char destContentType[] = { "application/json" };
+		if (strncmp(content_type.c_str(), destContentType, strlen(destContentType)) == 0) {
+			std::string body = req->data();
+
+			bool isUpdateSuccess = FakeDB::Inst().updateUserInfo(body);
+
+			if (isUpdateSuccess)
+			{
+				rp = webcc::ResponseBuilder{}.Body("{\"code\":0}").Json().Utf8()();
+				return rp;
+			}
+		}
+
+		rp = webcc::ResponseBuilder{}.Body("{\"code\":1, \"message\":\"username or password mismatch.\"}").Json().Utf8()();
+
+		return rp;
+	}
+
+	webcc::ResponsePtr onAdd(webcc::RequestPtr req, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
+
+		std::string content_type = req->GetHeader("Content-Type");
+		const char destContentType[] = { "application/json" };
+		if (strncmp(content_type.c_str(), destContentType, strlen(destContentType)) == 0) {
+			std::string body = req->data();
+
+			bool isUpdateSuccess = FakeDB::Inst().addUser(body);
+
+			if (isUpdateSuccess)
+			{
+				rp = webcc::ResponseBuilder{}.Body("{\"code\":0}").Json().Utf8()();
+				return rp;
+			}
+		}
+
+		rp = webcc::ResponseBuilder{}.Body("{\"code\":1}").Json().Utf8()();
+
+		return rp;
+	}
+
+	webcc::ResponsePtr isExist(webcc::RequestPtr req, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
+
+		std::string content_type = req->GetHeader("Content-Type");
+		const char destContentType[] = { "application/json" };
+		if (strncmp(content_type.c_str(), destContentType, strlen(destContentType)) == 0) {
+			std::string loginName = req->data();
+
+			bool isExist = FakeDB::Inst().isUserExist(loginName);
+
+			if (isExist)
+			{
+				rp = webcc::ResponseBuilder{}.Body("{\"code\":0,\"message\":\"login name exist!\"}").Json().Utf8()();
+				return rp;
+			}
+		}
+
+
+
+		rp = webcc::ResponseBuilder{}.Body("{\"code\":1,\"message\":\"login name is not exist!\"}").Json().Utf8()();
+
+		return rp;
+	}
+
+	webcc::ResponsePtr onDel(webcc::RequestPtr req, boost::shared_ptr<kagula::SessionInfo> pSI)
+	{
+		webcc::ResponsePtr rp;
+
+		std::string content_type = req->GetHeader("Content-Type");
+		const char destContentType[] = { "application/json" };
+		if (strncmp(content_type.c_str(), destContentType, strlen(destContentType)) == 0) {
+			std::string body = req->data();
+
+			bool isUpdateSuccess = FakeDB::Inst().delUserByID(body);
+
+			if (isUpdateSuccess)
+			{
+				rp = webcc::ResponseBuilder{}.Body("{\"code\":0}").Json().Utf8()();
+				return rp;
+			}
+		}
+
+
+
+		rp = webcc::ResponseBuilder{}.Body("{\"code\":1, \"message\":\"account is not exist.\"}").Json().Utf8()();
+
+		return rp;
+	}
 };
 
 int main() {
@@ -166,6 +330,7 @@ int main() {
 		//server.Route("/", std::make_shared<HelloView>());
 
 		server.Route(webcc::UrlRegex("/webccDemo/user/(\\w+).do"), std::make_shared<UserView>(), { "POST" });
+		server.Route(webcc::UrlRegex("/webccDemo/userGroup/(\\w+).do"), std::make_shared<GroupView>(), { "POST" });
 		server.Run();
 
 	}
