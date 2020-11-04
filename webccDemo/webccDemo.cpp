@@ -10,6 +10,9 @@
 
 #include "fakeDB.h"
 
+#include <boost/program_options.hpp>  
+namespace po = boost::program_options;
+
 class HelloView : public webcc::View {
 public:
 	webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
@@ -155,7 +158,7 @@ private:
 			pSI->session["username"] = request->kagulaArgs_["username"];
 
 			//設置返回内容
-			rp = webcc::ResponseBuilder{}.Json().Body("{\"ok\":1, \"message\":\"success\"}")();//XX.Json().XX不支持javascript $.post语法!
+			rp = webcc::ResponseBuilder{}.Json().Body("{\"ok\":1, \"message\":\"success\"}")();
 		}
 		else
 		{
@@ -323,9 +326,31 @@ private:
 	}
 };
 
-int main() {
+int main(int argc, char* argv[]) {
+	std::string rootDocument("C:\\Users\\chenlu-li\\source\\repos\\webcc20200813\\htmlRoot");
+	short  server_port;
+
+	po::options_description desc("Allowed options");
+	desc.add_options()
+		("help,h", "produce help message")
+		("rootDocument", po::value<std::string>(&rootDocument), "set the root of document.")
+		("server_port,p", po::value<short>(&server_port)->default_value(8080), "set the http_server's port. default:8080");
+
+	po::variables_map vm;
+	po::store(po::parse_command_line(argc, argv, desc), vm);
+	po::notify(vm);
+
+	if (vm.count("help"))
+	{
+		std::cout << desc << std::endl;
+		return 1;
+	}
+
+	std::cout << "rootDocument was set to " << rootDocument.c_str() << std::endl;
+	std::cout << "server_port was set to " << server_port << std::endl;
+
 	try {
-		webcc::Server server(8080, "C:\\Users\\chenlu-li\\source\\repos\\webcc20200813\\htmlRoot");
+		webcc::Server server(server_port, rootDocument);
 
 		//server.Route("/", std::make_shared<HelloView>());
 
