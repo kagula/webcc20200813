@@ -327,7 +327,7 @@ private:
 };
 
 int main(int argc, char* argv[]) {
-	std::string rootDocument("C:\\Users\\chenlu-li\\source\\repos\\webcc20200813\\htmlRoot");
+	std::string rootDocument("C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot");
 	short  server_port;
 
 	po::options_description desc("Allowed options");
@@ -346,8 +346,36 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
-	std::cout << "rootDocument was set to " << rootDocument.c_str() << std::endl;
-	std::cout << "server_port was set to " << server_port << std::endl;
+	bool isDocumentRootValid = [](std::string& rootDocument)->bool
+	{
+		boost::filesystem::path dir(rootDocument);
+		boost::filesystem::path file(rootDocument+"/index.html");
+
+		if (boost::filesystem::is_directory(dir) == false)
+		{
+			return false;
+		}
+
+		if (boost::filesystem::is_regular_file(file) == false)
+		{
+			return false;
+		}
+
+		if (boost::filesystem::exists(file) == false)
+		{
+			return false;
+		}
+		return true;
+	}(rootDocument);
+
+	std::cout << "rootDocument: " << rootDocument.c_str() << std::endl;
+	std::cout << "server_port: " << server_port << std::endl;
+
+	if (!isDocumentRootValid)
+	{
+		std::cout << "Document root is not valid!" << std::endl;
+		return -2;
+	}
 
 	try {
 		webcc::Server server(server_port, rootDocument);

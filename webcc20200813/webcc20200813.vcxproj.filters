@@ -105,10 +105,6 @@
     <Text Include="kagula_update_log.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="webcc\config.h.example" />
-    <None Include="webcc\config.h.in" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="base64.cc">
       <Filter>Source Files</Filter>
     </ClCompile>

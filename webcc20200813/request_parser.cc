@@ -25,7 +25,7 @@ bool RequestParser::OnHeadersEnd() {
   bool matched = view_matcher_(request_->method(), request_->url().path(),
                                &stream_);
 
-  if (matched && request_->url().path() == "/")
+  if (matched & request_->url().path() == "/")
   {
       request_->url().AppendPath("index.html");
   }

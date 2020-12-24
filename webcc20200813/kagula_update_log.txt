@@ -1,3 +1,9 @@
+2020-12-24
+Progress
+[1]add the code which verify rootDocument's validation.
+[2]change solution to x64 platform, because CMake tool default set is x64;
+[3]remove useless files in webcc project.
+-------------------------
 2020-11-04
 完成
 [1]rootDocument改为从命令行传入.

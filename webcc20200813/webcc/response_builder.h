@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "webcc/request.h"
-#include "webcc/response.h"
+#include "request.h"
+#include "response.h"
 
 namespace webcc {
 

@@ -3,7 +3,7 @@
 #include <cassert>
 #include <utility>  // std::move
 
-#include "zlib.h"
+#include <zlib.h>
 
 #include "webcc/logger.h"
 
