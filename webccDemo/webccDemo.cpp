@@ -10,8 +10,16 @@
 
 #include "fakeDB.h"
 
+
+#include <boost/filesystem.hpp>
 #include <boost/program_options.hpp>  
 namespace po = boost::program_options;
+
+#pragma region global setting 
+std::string g_rootDocument("C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot");
+std::string g_rootStore;
+short  g_server_port;
+#pragma endregion
 
 class HelloView : public webcc::View {
 public:
@@ -21,6 +29,35 @@ public:
 		}
 
 		return {};
+	}
+};
+
+class UploadFileView : public webcc::View {
+public:
+	webcc::ResponsePtr Handle(webcc::RequestPtr request, boost::shared_ptr<kagula::SessionInfo> pSI) override {
+		const std::vector<webcc::FormPartPtr> vecFpp = request->form_parts();
+		for (std::vector<webcc::FormPartPtr>::const_iterator iter = vecFpp.begin(); 
+			iter != vecFpp.end(); iter++)
+		{
+			if (iter->get()->name() == "file")
+			{
+				std::string fullPath = [=]()->std::string {
+					std::string fullPath = g_rootStore;
+					fullPath += "/";
+					fullPath += iter->get()->file_name();
+					return fullPath;
+				}();
+
+				//store the file to the current executable path.
+				//example: C:\Users\jun li\source\repos\webcc20200813\webccDemo\xxx.png
+				std::ofstream ostr(fullPath, std::ios::out | std::ios::binary);
+				ostr.write(iter->get()->data().c_str(), iter->get()->data().size());
+
+				break;
+			}
+		}
+
+		return webcc::ResponseBuilder{}.OK().Body("")();
 	}
 };
 
@@ -327,14 +364,20 @@ private:
 };
 
 int main(int argc, char* argv[]) {
-	std::string rootDocument("C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot");
-	short  server_port;
+	{
+		g_rootDocument = "C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot";
+
+		//store the file to the current executable path.
+		//example: C:\Users\jun li\source\repos\webcc20200813\webccDemo\xxx.png
+		g_rootStore = boost::filesystem::initial_path().string();
+	}
 
 	po::options_description desc("Allowed options");
 	desc.add_options()
 		("help,h", "produce help message")
-		("rootDocument", po::value<std::string>(&rootDocument), "set the root of document.")
-		("server_port,p", po::value<short>(&server_port)->default_value(8080), "set the http_server's port. default:8080");
+		("rootDocument", po::value<std::string>(&g_rootDocument), "set the root of document.")
+		("rootStore", po::value<std::string>(&g_rootStore), "set the root of storage.")
+		("server_port,p", po::value<short>(&g_server_port)->default_value(8080), "set the http_server's port. default:8080");
 
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -366,10 +409,10 @@ int main(int argc, char* argv[]) {
 			return false;
 		}
 		return true;
-	}(rootDocument);
+	}(g_rootDocument);
 
-	std::cout << "rootDocument: " << rootDocument.c_str() << std::endl;
-	std::cout << "server_port: " << server_port << std::endl;
+	std::cout << "rootDocument: " << g_rootDocument.c_str() << std::endl;
+	std::cout << "server_port: " << g_server_port << std::endl;
 
 	if (!isDocumentRootValid)
 	{
@@ -378,12 +421,13 @@ int main(int argc, char* argv[]) {
 	}
 
 	try {
-		webcc::Server server(server_port, rootDocument);
+		webcc::Server server(g_server_port, g_rootDocument);
 
 		//server.Route("/", std::make_shared<HelloView>());
 
 		server.Route(webcc::UrlRegex("/webccDemo/user/(\\w+).do"), std::make_shared<UserView>(), { "POST" });
 		server.Route(webcc::UrlRegex("/webccDemo/userGroup/(\\w+).do"), std::make_shared<GroupView>(), { "POST" });
+		server.Route(webcc::UrlRegex("/webccDemo/uploadAFile.do"), std::make_shared<UploadFileView>(), { "POST" });
 		server.Run();
 
 	}
