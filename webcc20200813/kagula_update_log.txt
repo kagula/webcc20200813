@@ -1,3 +1,7 @@
+2020-01-13
+Progress
+[1]migrate to CentOS7 Success!
+-------------------------
 2020-01-10
 Progress
 [1]migrate to CentOS 遇到如下问题
