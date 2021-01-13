@@ -1,8 +1,8 @@
-#include "webcc/response_parser.h"
+#include "response_parser.h"
 
-#include "webcc/logger.h"
-#include "webcc/response.h"
-#include "webcc/string.h"
+#include "logger.h"
+#include "response.h"
+#include "string.h"
 
 namespace webcc {
 

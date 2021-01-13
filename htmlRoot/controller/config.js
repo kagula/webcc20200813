@@ -2,7 +2,7 @@
  * Created by kagula on 2017-09-14.
  */
 
- var url_prefix="http://127.0.0.1:8080/"
+ var url_prefix="";//"http://127.0.0.1:8080/"
 
 function initAugularConfig()
 {

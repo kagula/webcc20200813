@@ -1,11 +1,11 @@
-#include "webcc/url.h"
+#include "url.h"
 
 #include <algorithm>
 #include <cctype>
 #include <functional>
 
-#include "webcc/string.h"
-#include "webcc/utility.h"
+#include "string.h"
+#include "utility.h"
 
 namespace webcc {
 

@@ -1,12 +1,12 @@
-#include "webcc/parser.h"
+#include "parser.h"
 
-#include "webcc/logger.h"
-#include "webcc/message.h"
-#include "webcc/string.h"
-#include "webcc/utility.h"
+#include "logger.h"
+#include "message.h"
+#include "string.h"
+#include "utility.h"
 
 #if WEBCC_ENABLE_GZIP
-#include "webcc/gzip.h"
+#include "gzip.h"
 #endif
 
 namespace webcc {

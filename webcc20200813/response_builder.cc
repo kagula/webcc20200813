@@ -1,11 +1,11 @@
-#include "webcc/response_builder.h"
+#include "response_builder.h"
 
-#include "webcc/base64.h"
-#include "webcc/logger.h"
-#include "webcc/utility.h"
+#include "base64.h"
+#include "logger.h"
+#include "utility.h"
 
 #if WEBCC_ENABLE_GZIP
-#include "webcc/gzip.h"
+#include "gzip.h"
 #endif
 
 namespace webcc {

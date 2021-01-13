@@ -1,5 +1,12 @@
 2020-01-10
 Progress
+[1]migrate to CentOS 遇到如下问题
+/usr/local/include/c++/6.5.0/cstring:75:11: error: ‘::memchr’ has not been declared
+   using ::memchr;
+exclude gcc version too old, c++11 too old reason, boost version too old.
+-------------------------
+2020-01-10
+Progress
 [1]add file upload demo.
    add Demo_fileUpload.html
    improve webccDemo.cpp

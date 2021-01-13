@@ -1,11 +1,11 @@
-#include "webcc/request_parser.h"
+#include "request_parser.h"
 
 #include <vector>
 
-#include "webcc/logger.h"
-#include "webcc/request.h"
-#include "webcc/string.h"
-#include "webcc/utility.h"
+#include "logger.h"
+#include "request.h"
+#include "string.h"
+#include "utility.h"
 
 namespace webcc {
 

@@ -30,4 +30,7 @@
   <ItemGroup>
     <None Include="..\htmlRoot\Demo_fileUpload.htm" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>

@@ -15,94 +15,94 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="webcc\base64.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\body.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\config.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\connection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\connection_pool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\gzip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\request.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\request_builder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\request_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\response.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\response_builder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\response_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\router.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\server.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\socket.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\string.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\url.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\utility.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\version.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="webcc\view.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sessionSupport.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sessionInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="base64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="connection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="connection_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gzip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="request.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="request_builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="request_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="response.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="response_builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="response_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="router.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="url.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="webcc\CMakeLists.txt" />
     <Text Include="kagula_update_log.txt" />
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base64.cc">

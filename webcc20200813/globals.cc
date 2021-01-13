@@ -1,8 +1,8 @@
-#include "webcc/globals.h"
+#include "globals.h"
 
 #include <iostream>
 
-#include "webcc/string.h"
+#include "string.h"
 
 namespace webcc {
 

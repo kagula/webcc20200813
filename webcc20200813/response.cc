@@ -1,6 +1,6 @@
-#include "webcc/response.h"
+#include "response.h"
 
-#include "webcc/utility.h"
+#include "utility.h"
 
 namespace webcc {
 

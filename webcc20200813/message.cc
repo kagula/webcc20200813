@@ -1,10 +1,10 @@
-#include "webcc/message.h"
+#include "message.h"
 
 #include <sstream>
 
-#include "webcc/logger.h"
-#include "webcc/string.h"
-#include "webcc/utility.h"
+#include "logger.h"
+#include "string.h"
+#include "utility.h"
 
 namespace webcc {
 

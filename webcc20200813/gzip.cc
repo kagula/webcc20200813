@@ -1,11 +1,11 @@
-#include "webcc/gzip.h"
+#include "gzip.h"
 
 #include <cassert>
 #include <utility>  // std::move
 
 #include <zlib.h>
 
-#include "webcc/logger.h"
+#include "logger.h"
 
 namespace webcc {
 namespace gzip {

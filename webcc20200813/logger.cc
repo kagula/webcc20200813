@@ -1,4 +1,4 @@
-#include "webcc/logger.h"
+#include "logger.h"
 
 #if WEBCC_ENABLE_LOG
 

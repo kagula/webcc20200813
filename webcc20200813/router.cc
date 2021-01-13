@@ -1,9 +1,9 @@
-#include "webcc/router.h"
+#include "router.h"
 
 #include <algorithm>
 
-#include "webcc/logger.h"
-#include "webcc/string.h"
+#include "logger.h"
+#include "string.h"
 
 namespace webcc {
 

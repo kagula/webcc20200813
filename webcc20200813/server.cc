@@ -1,14 +1,14 @@
-﻿#include "webcc/server.h"
+﻿#include "server.h"
 
 #include <csignal>
 #include <fstream>
 #include <utility>
 
-#include "webcc/body.h"
-#include "webcc/logger.h"
-#include "webcc/request.h"
-#include "webcc/response.h"
-#include "webcc/utility.h"
+#include "body.h"
+#include "logger.h"
+#include "request.h"
+#include "response.h"
+#include "utility.h"
 
 #include <boost/algorithm/string.hpp>
 

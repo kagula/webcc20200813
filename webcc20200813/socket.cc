@@ -1,4 +1,4 @@
-#include "webcc/socket.h"
+#include "socket.h"
 
 #if WEBCC_ENABLE_SSL
 #if (defined(_WIN32) || defined(_WIN64))
@@ -7,16 +7,16 @@
 #include <wincrypt.h>
 #include <cryptuiapi.h>
 
-#include "openssl/x509.h"
+#include <openssl/x509.h>
 
 #endif  // defined(_WIN32) || defined(_WIN64)
 #endif  // WEBCC_ENABLE_SSL
 
-#include "boost/asio/connect.hpp"
-#include "boost/asio/read.hpp"
-#include "boost/asio/write.hpp"
+#include <boost/asio/connect.hpp>
+#include <boost/asio/read.hpp>
+#include <boost/asio/write.hpp>
 
-#include "webcc/logger.h"
+#include "logger.h"
 
 namespace webcc {
 

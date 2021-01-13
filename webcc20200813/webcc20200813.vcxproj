@@ -19,38 +19,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base64.h" />
+    <ClInclude Include="body.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="connection.h" />
+    <ClInclude Include="connection_pool.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="gzip.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="message.h" />
+    <ClInclude Include="parser.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="request.h" />
+    <ClInclude Include="request_builder.h" />
+    <ClInclude Include="request_parser.h" />
+    <ClInclude Include="response.h" />
+    <ClInclude Include="response_builder.h" />
+    <ClInclude Include="response_parser.h" />
+    <ClInclude Include="router.h" />
+    <ClInclude Include="server.h" />
     <ClInclude Include="sessionInfo.h" />
     <ClInclude Include="sessionSupport.h" />
-    <ClInclude Include="webcc\base64.h" />
-    <ClInclude Include="webcc\body.h" />
-    <ClInclude Include="webcc\common.h" />
-    <ClInclude Include="webcc\config.h" />
-    <ClInclude Include="webcc\connection.h" />
-    <ClInclude Include="webcc\connection_pool.h" />
-    <ClInclude Include="webcc\globals.h" />
-    <ClInclude Include="webcc\gzip.h" />
-    <ClInclude Include="webcc\logger.h" />
-    <ClInclude Include="webcc\message.h" />
-    <ClInclude Include="webcc\parser.h" />
-    <ClInclude Include="webcc\queue.h" />
-    <ClInclude Include="webcc\request.h" />
-    <ClInclude Include="webcc\request_builder.h" />
-    <ClInclude Include="webcc\request_parser.h" />
-    <ClInclude Include="webcc\response.h" />
-    <ClInclude Include="webcc\response_builder.h" />
-    <ClInclude Include="webcc\response_parser.h" />
-    <ClInclude Include="webcc\router.h" />
-    <ClInclude Include="webcc\server.h" />
-    <ClInclude Include="webcc\socket.h" />
-    <ClInclude Include="webcc\string.h" />
-    <ClInclude Include="webcc\url.h" />
-    <ClInclude Include="webcc\utility.h" />
-    <ClInclude Include="webcc\version.h" />
-    <ClInclude Include="webcc\view.h" />
+    <ClInclude Include="socket.h" />
+    <ClInclude Include="string.h" />
+    <ClInclude Include="url.h" />
+    <ClInclude Include="utility.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="view.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CMakeLists.txt" />
     <Text Include="kagula_update_log.txt" />
-    <Text Include="webcc\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base64.cc" />
@@ -186,7 +186,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>

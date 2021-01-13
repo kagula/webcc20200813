@@ -2,11 +2,11 @@
 #include <regex>
 #include <memory>
 
-#include "../webcc20200813/webcc/logger.h"
-#include "../webcc20200813/webcc/response_builder.h"
-#include "../webcc20200813/webcc/server.h"
+#include "../webcc20200813/logger.h"
+#include "../webcc20200813/response_builder.h"
+#include "../webcc20200813/server.h"
 
-#include "sessionSupport.h"
+#include "../webcc20200813/sessionSupport.h"
 
 #include "fakeDB.h"
 
@@ -16,7 +16,7 @@
 namespace po = boost::program_options;
 
 #pragma region global setting 
-std::string g_rootDocument("C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot");
+std::string g_rootDocument;
 std::string g_rootStore;
 short  g_server_port;
 #pragma endregion
@@ -365,8 +365,12 @@ private:
 
 int main(int argc, char* argv[]) {
 	{
+#ifdef _WIN32
 		g_rootDocument = "C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot";
-
+#else
+		g_rootDocument =
+			g_rootStore = boost::filesystem::initial_path().string() + "/htmlRoot";
+#endif
 		//store the file to the current executable path.
 		//example: C:\Users\jun li\source\repos\webcc20200813\webccDemo\xxx.png
 		g_rootStore = boost::filesystem::initial_path().string();
@@ -412,6 +416,7 @@ int main(int argc, char* argv[]) {
 	}(g_rootDocument);
 
 	std::cout << "rootDocument: " << g_rootDocument.c_str() << std::endl;
+	std::cout << "rootStore: " << g_rootStore.c_str() << std::endl;
 	std::cout << "server_port: " << g_server_port << std::endl;
 
 	if (!isDocumentRootValid)

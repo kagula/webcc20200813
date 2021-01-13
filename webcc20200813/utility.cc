@@ -1,4 +1,4 @@
-#include "webcc/utility.h"
+#include "utility.h"
 
 #include <algorithm>
 #include <ctime>
@@ -8,8 +8,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "webcc/string.h"
-#include "webcc/version.h"
+#include "string.h"
+#include "version.h"
 
 namespace webcc {
 namespace utility {

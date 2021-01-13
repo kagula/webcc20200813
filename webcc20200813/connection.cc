@@ -1,11 +1,11 @@
-#include "webcc/connection.h"
+#include "connection.h"
 
 #include <utility>
 
-#include "boost/asio/write.hpp"
+#include <boost/asio/write.hpp>
 
-#include "webcc/connection_pool.h"
-#include "webcc/logger.h"
+#include "connection_pool.h"
+#include "logger.h"
 
 using asio::ip::tcp;
 
