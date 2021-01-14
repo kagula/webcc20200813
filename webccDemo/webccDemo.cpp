@@ -2,6 +2,12 @@
 #include <regex>
 #include <memory>
 
+
+#include <boost/filesystem.hpp>
+#include <boost/program_options.hpp>  
+namespace po = boost::program_options;
+
+
 #include "../webcc20200813/logger.h"
 #include "../webcc20200813/response_builder.h"
 #include "../webcc20200813/server.h"
@@ -9,11 +15,6 @@
 #include "../webcc20200813/sessionSupport.h"
 
 #include "fakeDB.h"
-
-
-#include <boost/filesystem.hpp>
-#include <boost/program_options.hpp>  
-namespace po = boost::program_options;
 
 #pragma region global setting 
 std::string g_rootDocument;
@@ -365,7 +366,7 @@ private:
 
 int main(int argc, char* argv[]) {
 	{
-#ifdef _WIN32
+#ifdef _DEBUG
 		g_rootDocument = "C:\\Users\\jun li\\source\\repos\\webcc20200813\\htmlRoot";
 #else
 		g_rootDocument =

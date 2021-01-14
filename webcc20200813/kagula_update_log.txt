@@ -1,3 +1,7 @@
+2020-01-14
+Progress
+[1]Resolving the problem which the webccDemo project can not be build after updates Visual Studio 2019 to version 16.8.4 .
+-------------------------
 2020-01-13
 Progress
 [1]migrate to CentOS7 Success!

@@ -1,4 +1,5 @@
-﻿#ifndef _FAKEDB_H_
+#pragma once
+#ifndef _FAKEDB_H_
 #define _FAKEDB_H_
 
 #ifdef _WIN32

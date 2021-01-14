@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\webcc20200813;C:\SDK\cJSON;C:\SDK\zlib-1.2.8;C:\SDK\zlib-1.2.8\vc2019;$(BOOST_ROOT);$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>C:\SDK\cJSON;C:\SDK\zlib-1.2.8;C:\SDK\zlib-1.2.8\vc2019;$(BOOST_ROOT);$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>C:\SDK\cJSON\vc2019\$(Configuration);C:\SDK\zlib-1.2.8\vc2019\$(Configuration);$(BOOST_ROOT)\vc2019\lib;$(OutDir);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,19 +148,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="fakeDB.cpp" />
-    <ClCompile Include="webccDemo.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="fakeDB.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\htmlRoot\Demo_fileUpload.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="fakeDB.cpp" />
+    <ClCompile Include="webccDemo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fakeDB.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

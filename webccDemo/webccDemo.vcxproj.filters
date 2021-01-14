@@ -15,10 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="webccDemo.cpp">
+    <None Include="..\htmlRoot\Demo_fileUpload.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="fakeDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fakeDB.cpp">
+    <ClCompile Include="webccDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,11 +32,5 @@
     <ClInclude Include="fakeDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\htmlRoot\Demo_fileUpload.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

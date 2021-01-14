@@ -1,4 +1,4 @@
-ï»¿#include "fakeDB.h"
+#include "fakeDB.h"
 
 
 #include <cJSON.h>
@@ -15,14 +15,14 @@ FakeDB::FakeDB()
 	_userList.push_back({ 2,"inuyasha","123",2 });
 	_userList.push_back({ 3,"kagome","123",2 });
 	_userList.push_back({ 4,"kikyo","123",2 });
-	_userList.push_back({ 5,u8"ã›ã£ã—ã‚‡ã†ã¾ã‚‹","123",2 });
-	_userList.push_back({ 6,u8"ã‹ãã‚‰","123",2 });
-	_userList.push_back({ 7,u8"æ—ºè´¢","123",2 });
-	_userList.push_back({ 8,u8"ç¥æ¥½","123",2 });
+	_userList.push_back({ 5,u8"¤»¤Ã¤·¤ç¤¦¤Ş¤ë","123",2 });
+	_userList.push_back({ 6,u8"¤«¤°¤é","123",2 });
+	_userList.push_back({ 7,u8"Íú²Æ","123",2 });
+	_userList.push_back({ 8,u8"Éñ˜S","123",2 });
 
 	_groupList.push_back({ 1,"admin", "ROLE_ADMIN", 1 });
-	_groupList.push_back({ 2,u8"æ™®é€š", "ROLE_USER", 1 });
-	_groupList.push_back({ 3,u8"å¥¥æ—åŒ¹æ–¯ç¥æ—", "ROLE_ADMIN,ROLE_USER", 1 });
+	_groupList.push_back({ 2,u8"ÆÕÍ¨", "ROLE_USER", 1 });
+	_groupList.push_back({ 3,u8"°ÂÁÖÆ¥Ë¹Éñ×å", "ROLE_ADMIN,ROLE_USER", 1 });
 }
 
 std::shared_ptr<std::string> FakeDB::getUserListAll(bool isAdmin)
