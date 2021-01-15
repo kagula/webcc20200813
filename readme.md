@@ -1,13 +1,14 @@
 ### What is the webcc20200813?
-+ the lightweight http server solution, i use it as connector, you can use it connect your module with the other programs run in the variey of computer systems.
-+ Because is originated from the webcc open source project at Aug 13 2020, so The solution is called webcc20200813.
-
++ The lightweight HTTP server solution, I use it as a connector, you can use it connect your module with the other programs run in a variety of computer systems.
++ Because it is originated from the webcc open source project on Aug 13, 2020, so The solution is called webcc20200813.
++ **[Introduction in Chinese.](https://blog.csdn.net/lee353086/article/details/109486317?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522161068094116780277020706%252522%25252C%252522scm%252522%25253A%25252220140713.130102334.pc%25255Fblog.%252522%25257D&request_id=161068094116780277020706&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-109486317.pc_v2_rank_blog_default&utm_term=webcc)**
+ 
 ### Feature
 [1]Support http x-www-form-urlencoded post method.  
 [2]Support file upload.  
 
 ### How to use
-+ Using html5+javascript to demo how to interactive with the http server.
++ Using html5+javascript to demo how to interact with the HTTP server.
 + Frontend code is in the htmlRoot directory.
 + backend code is in the webccDemo project.  
 
