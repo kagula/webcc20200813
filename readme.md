@@ -5,7 +5,7 @@
  
 ### Feature
 + Support http x-www-form-urlencoded post method.  
-+ Cookies support.  
++ Support cookies.  
 + Support file upload.  
 
 ### How to use
