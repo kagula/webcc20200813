@@ -4,9 +4,9 @@
 + **[Introduction in Chinese.](https://blog.csdn.net/lee353086/article/details/109486317?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522161068094116780277020706%252522%25252C%252522scm%252522%25253A%25252220140713.130102334.pc%25255Fblog.%252522%25257D&request_id=161068094116780277020706&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-109486317.pc_v2_rank_blog_default&utm_term=webcc)**
  
 ### Feature
-[1]Support http x-www-form-urlencoded post method.  
-[2]Cookies support.
-[3]Support file upload.  
++ Support http x-www-form-urlencoded post method.  
++ Cookies support.  
++ Support file upload.  
 
 ### How to use
 + Using html5+javascript to demo how to interact with the HTTP server.
