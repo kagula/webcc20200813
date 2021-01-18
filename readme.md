@@ -5,7 +5,8 @@
  
 ### Feature
 [1]Support http x-www-form-urlencoded post method.  
-[2]Support file upload.  
+[2]Cookies support.
+[3]Support file upload.  
 
 ### How to use
 + Using html5+javascript to demo how to interact with the HTTP server.
